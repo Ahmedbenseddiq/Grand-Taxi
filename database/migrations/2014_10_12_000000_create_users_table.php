@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('Passager'); // Default role can be 'user' or any other role you prefer
+            $table->enum('role',['admin','driver','client'])->default('client');
             $table->string('image');
             $table->rememberToken();
             $table->timestamps();
