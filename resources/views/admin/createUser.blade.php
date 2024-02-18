@@ -23,7 +23,7 @@
                                 </ul>
                             @endif
                         </div>
-                        <form method="POST" action="{{ route('admin.createStore') }}" class="requires-validation" novalidate enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.storeUser') }}" class="requires-validation" novalidate enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="name" placeholder="Full Name" required>

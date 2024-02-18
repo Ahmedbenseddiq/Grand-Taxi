@@ -8,23 +8,20 @@ use App\Models\User;
 
 class adminController extends Controller
 {
-    public function index(){
-        return view('admin.driver');
-        return view('admin.clients');
+    public function index()
+{
+    if (request()->is('admin/driver')) {
+        $users = User::where('role', 'driver')->get();
+        return view('admin.driver', ['users' => $users]);
+    } elseif (request()->is('admin/client')) {
+        $users = User::where('role', 'client')->get();
+        return view('admin.client', ['users' => $users]);
+    } elseif (request()->is('admin/reservation')) {
+        // Logic for reservations view
         return view('admin.reservation');
-    }
+    } 
+}
 
-    public function showDrivers()
-    {
-        $drivers = User::where('role', 'driver')->get();
-        return view('admin.driver', ['drivers' => $drivers]);
-    }
-
-    public function showClients()
-    {
-        $clients = User::where('role', 'client')->get();
-        return view('admin.clients', ['clients' => $clients]);
-    }
 
     public function create (){
         return view('admin.createUser');

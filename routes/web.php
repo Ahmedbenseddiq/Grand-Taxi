@@ -38,7 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/client', [adminController::class, 'index'])->name('admin.client');
     Route::get('admin/reservation', [adminController::class, 'index'])->name('admin.reservation');
     Route::get('admin/createUser', [adminController::class, 'create'])->name('admin.createUser');
-    Route::post('admin/driver', [adminController::class, 'store'])->name('admin.storUser');
+    Route::post('admin/driver', [adminController::class, 'store'])->name('admin.storeUser');
 });
 
 Route::middleware(['auth', 'role:driver'])->group(function () {
