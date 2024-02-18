@@ -39,7 +39,8 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-    <header class="header-desktop3 d-none d-lg-block">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
@@ -50,18 +51,18 @@
                    <div class="header__navbar">
                          <ul class="list-unstyled">
                              <li class="has-sub">
-                                <a href="driver.html">
+                                <a href="{{ route('admin.driver') }}">
                                     <i class="fas fa-car"></i>Drivers
                                     <span class="bot-line"></span>
                                 </a>
                             </li> 
                              <li>
-                                <a href="client.html">
+                                <a href="{{ route('admin.client') }}">
                                     <i class="fas fa-user"></i>
                                     <span class="bot-line"></span>Clients</a>
                             </li> 
                              <li>
-                                <a href="register.html">
+                                <a href="{{ route('admin.reservation') }}">
                                     <i class="far fa-calendar-check"></i>
                                     <span class="bot-line"></span>Reservations</a>
                             </li>    
@@ -144,15 +145,15 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="driver.html">
+                            <a href="{{ route('admin.driver') }}">
                                 <i class="fas fa-car"></i>Drivers</a>
                         </li>
                         <li>
-                            <a href="client.html">
+                            <a href="{{ route('admin.client') }}">
                                 <i class="fas fa-user"></i>Clients</a>
                         </li>
                         <li>
-                            <a href="reservation.html">
+                            <a href="{{ route('admin.reservation') }}">
                                 <i class="far fa-calendar-check"></i>Reservations</a>
                         </li>
                         
@@ -164,35 +165,7 @@
 
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
-            <!-- <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Dashboard</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
+            
             <!-- END BREADCRUMB-->
 
             <!-- WELCOME-->
@@ -260,36 +233,15 @@
                             <h3 class="title-5 m-b-35">data table</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
-                                    <!-- <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="property">
-                                            <option selected="selected">All Properties</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
-                                    <!-- <div class="rs-select2--light rs-select2--sm">
-                                        <select class="js-select2" name="time">
-                                            <option selected="selected">Today</option>
-                                            <option value="">3 Days</option>
-                                            <option value="">1 Week</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
-                                    <!-- <button class="au-btn-filter">
-                                        <i class="zmdi zmdi-filter-list"></i>filters</button> -->
+                                    
+                                    
+                                     <button class="au-btn-filter">
+                                        <i class="zmdi zmdi-filter-list"></i>filters</button>
                                 </div>
                                 <div class="table-data__tool-right">
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
-                                    <!-- <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
+                                    <a href="{{ route('admin.createUser') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add item</a>
+                                    
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">

@@ -39,7 +39,8 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-    <header class="header-desktop3 d-none d-lg-block">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
@@ -50,18 +51,18 @@
                    <div class="header__navbar">
                          <ul class="list-unstyled">
                              <li class="has-sub">
-                                <a href="driver.html">
+                                <a href="{{ route('admin.driver') }}">
                                     <i class="fas fa-car"></i>Drivers
                                     <span class="bot-line"></span>
                                 </a>
                             </li> 
                              <li>
-                                <a href="client.html">
+                                <a href="{{ route('admin.client') }}">
                                     <i class="fas fa-user"></i>
                                     <span class="bot-line"></span>Clients</a>
                             </li> 
                              <li>
-                                <a href="register.html">
+                                <a href="{{ route('admin.reservation') }}">
                                     <i class="far fa-calendar-check"></i>
                                     <span class="bot-line"></span>Reservations</a>
                             </li>    
@@ -144,15 +145,15 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="driver.html">
+                            <a href="{{ route('admin.driver') }}">
                                 <i class="fas fa-car"></i>Drivers</a>
                         </li>
                         <li>
-                            <a href="client.html">
+                            <a href="{{ route('admin.client') }}">
                                 <i class="fas fa-user"></i>Clients</a>
                         </li>
                         <li>
-                            <a href="reservation.html">
+                            <a href="{{ route('admin.reservation') }}">
                                 <i class="far fa-calendar-check"></i>Reservations</a>
                         </li>
                         
@@ -164,35 +165,7 @@
 
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
-            <!-- <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">
-                                            <a href="#">Home</a>
-                                        </li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Dashboard</li>
-                                    </ul>
-                                </div>
-                                <form class="au-form-icon--sm" action="" method="post">
-                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for datas &amp; reports...">
-                                    <button class="au-btn--submit2" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
+            
             <!-- END BREADCRUMB-->
 
             <!-- WELCOME-->

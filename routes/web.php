@@ -31,10 +31,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
+    
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('admin/dashboard', [adminController::class, 'index'])->name('admin.dashboard');
+    Route::get('admin/driver', [adminController::class, 'index'])->name('admin.driver');
+    Route::get('admin/client', [adminController::class, 'index'])->name('admin.client');
+    Route::get('admin/reservation', [adminController::class, 'index'])->name('admin.reservation');
+    Route::get('admin/createUser', [adminController::class, 'create'])->name('admin.createUser');
 });
 
 Route::middleware(['auth', 'role:driver'])->group(function () {

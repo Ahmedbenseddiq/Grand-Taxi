@@ -41,7 +41,7 @@
 						<li>
                             <div class="">
                                 <form method="POST" action="{{ route('logout') }}">
-                                    @csrf0.
+                                    @csrf
 
                                     <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
