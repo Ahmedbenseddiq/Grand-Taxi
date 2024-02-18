@@ -257,22 +257,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($users as $user)
                                         <tr class="tr-shadow">
-                                            <!-- <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td> -->
-                                            <td>Lori Lynch</td>
+        
+                                            <td>{{$user->name}} </td>
                                             <td>
-                                                <span class="block-email">lori@example.com</span>
+                                                <span class="block-email">{{$user->email}}</span>
                                             </td>
-                                            <td class="desc">driver</td>
-                                            <td>active</td>
+                                            <td class="desc">{{$user->role}}</td>
+                                            <td>{{$user->status}}</td>
                                             <td>
-                                                <span class="status--process">image</span>
+                                                <span class="status--process">{{$user->image}}</span>
                                             </td>
                                             <td>
                                                 <div class="table-data-feature">
@@ -288,7 +283,7 @@
                                             </td>
                                         </tr>
                                         <tr class="spacer"></tr>
-                                        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
