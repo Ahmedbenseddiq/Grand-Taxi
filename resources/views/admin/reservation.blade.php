@@ -65,46 +65,8 @@
                                 <a href="{{ route('admin.reservation') }}">
                                     <i class="far fa-calendar-check"></i>
                                     <span class="bot-line"></span>Reservations</a>
-                            </li>    
-                        </ul> 
-                    </div>
-                    <div class="header__tool">
-                        <div class="account-wrap">
-                            <div class="account-item account-item--style2 clearfix js-item-menu">
-                                <div class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                </div>
-                                <div class="content">
-                                    <a class="js-acc-btn" href="#">john doe</a>
-                                </div>
-                                <div class="account-dropdown js-dropdown">
-                                    <div class="info clearfix">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                            </a>
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="name">
-                                                <a href="#">john doe</a>
-                                            </h5>
-                                            <span class="email">johndoe@example.com</span>
-                                        </div>
-                                    </div>
-                                    <div class="account-dropdown__body">
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-account"></i>Account
-                                            </a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                    <div class="">
+                            </li>
+                            <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
@@ -113,12 +75,9 @@
                                                         this.closest('form').submit();"> <i class="zmdi zmdi-power"></i>
                                         {{ __('Log Out') }}
                                     </a>
-                                </form>
-                                
-                            </div>
-                                </div>
-                            </div>
-                        </div>
+                               </form>  
+                            </li>  
+                        </ul> 
                     </div>
                 </div>
             </div>
@@ -193,7 +152,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">368</h2>
+                                <h2 class="number">{{ $driverCount }}</h2>
                                 <span class="desc">drivers</span>
                                 <div class="icon">
                                     <i class="fas fa-car"></i></i>
@@ -203,7 +162,7 @@
                         
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">86</h2>
+                                <h2 class="number">{{ $clientCount }}</h2>
                                 <span class="desc">clients</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
@@ -212,7 +171,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">746</h2>
+                                <h2 class="number">{{ $reservationCount }}</h2>
                                 <span class="desc">reservation</span>
                                 <div class="icon ">
                                     <i class="zmdi zmdi-calendar-note"></i>

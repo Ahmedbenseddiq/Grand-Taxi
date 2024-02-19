@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('schedule_id');
             $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
-            $table->unsignedBigInteger('trip_id');
-            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
+            $table->unsignedBigInteger('driver_trip_id');
+            $table->foreign('driver_trip_id')->references('id')->on('driver_trip')->onDelete('cascade');
             $table->boolean('status')->default(false);
             $table->boolean('arrived')->default(false);
             $table->timestamps();

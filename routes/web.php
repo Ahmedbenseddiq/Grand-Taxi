@@ -39,6 +39,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('admin/reservation', [adminController::class, 'index'])->name('admin.reservation');
     Route::get('admin/createUser', [adminController::class, 'create'])->name('admin.createUser');
     Route::post('admin/driver', [adminController::class, 'store'])->name('admin.storeUser');
+    Route::get('admin/{user}/edit', [adminController::class, 'edit'])->name('admin.editUser');
+    Route::post('admin/{user}/update', [adminController::class, 'update'])->name('admin.updateUser');
+    Route::post('admin/{user}/destroy', [adminController::class, 'destroy'])->name('admin.destroyUser');
 });
 
 Route::middleware(['auth', 'role:driver'])->group(function () {
