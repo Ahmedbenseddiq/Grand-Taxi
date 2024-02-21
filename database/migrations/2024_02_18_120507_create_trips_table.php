@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('pickup_city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->unsignedBigInteger('destination_city_id');
             $table->foreign('destination_city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->date('date');
             $table->timestamps();
         });
     }

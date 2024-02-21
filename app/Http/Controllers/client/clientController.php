@@ -9,21 +9,21 @@ use Illuminate\Support\Facades\Auth; // Import the Auth facade
 class clientController extends Controller
 {
     public function index(){
-        return view('client.dashboard');
+        return view('client.home');
     }
 
-    public function dashboard(){
+    // public function dashboard(){
 
-        if(Auth::check()) {
-            if(Auth::user()->role === 'admin'){
-                return redirect()->route('admin.dashboard');
-            } elseif(Auth::user()->role === 'driver'){
-                return redirect()->route('driver.dashboard');
-            }   elseif(Auth::user()->role === 'client'){
-                return redirect()->route('client.dashboard');
-            }    
-        }
+    //     if(Auth::check()) {
+    //         if(Auth::user()->role === 'admin'){
+    //             return redirect()->route('admin.dashboard');
+    //         } elseif(Auth::user()->role === 'driver'){
+    //             return redirect()->route('driver.dashboard');
+    //         }   elseif(Auth::user()->role === 'client'){
+    //             return redirect()->route('client.dashboard');
+    //         }    
+    //     }
         
-        return view('dashboard');
-    }
+    //     return view('dashboard');
+    // }
 }

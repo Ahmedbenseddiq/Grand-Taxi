@@ -19,18 +19,21 @@ class UserSeeder extends Seeder
                 'email' => 'admin@example.com',
                 'password' => bcrypt('12345678'),
                 'role' => 'admin',
+                'image' => 'image',
             ],
             [
                 'name' => 'driver',
                 'email' => 'driver@example.com',
                 'password' => bcrypt('12345678'),
                 'role' => 'driver',
+                'image' => 'image',
             ],
             [
                 'name' => 'client',
                 'email' => 'client@example.com',
                 'password' => bcrypt('12345678'),
                 'role' => 'client',
+                'image' => 'image',
             ],
         ]);
     }

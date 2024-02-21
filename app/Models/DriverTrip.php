@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DriverDetail extends Model
+class DriverTrip extends Model
 {
-    protected $fillable = ['driver_id', 'lisence_plate', 'type', 'payment'];
+    protected $fillable = ['driver_id', 'trip_id'];
 
     public function driver()
     {
         return $this->belongsTo(User::class, 'driver_id');
     }
 
-    public function trips()
+    public function trip()
     {
-        return $this->hasMany(DriverTrip::class, 'driver_id');
+        return $this->belongsTo(Trip::class);
     }
 }

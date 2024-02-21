@@ -12,7 +12,7 @@
 
 
     <!-- Title Page-->
-    <title>Admin</title>
+    <title>Driver</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{URL::asset('css/font-face.css')}}" rel="stylesheet" media="all">

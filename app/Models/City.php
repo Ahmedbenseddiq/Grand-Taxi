@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    use HasFactory;
+    protected $fillable = ['city_name'];
 
-    protected $fillable = [
-        'name',
-    ];
+    public function tripsFrom()
+    {
+        return $this->hasMany(Trip::class, 'pickup_city_id');
+    }
+
+    public function tripsTo()
+    {
+        return $this->hasMany(Trip::class, 'destination_city_id');
+    }
 }

@@ -49,6 +49,7 @@ Route::middleware(['auth', 'role:driver'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
-    Route::get('client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
+    Route::get('client/home', [ClientController::class, 'index'])->name('client.home');
+    Route::get('client/search', [ClientController::class, 'index'])->name('client.search');
 });
   

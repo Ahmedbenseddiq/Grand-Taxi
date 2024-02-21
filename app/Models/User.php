@@ -38,4 +38,26 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'client_id');
+    }
+
+    /**
+     * Relationship with driver details.
+     */
+    public function driverDetails()
+    {
+        return $this->hasOne(DriverDetail::class, 'driver_id');
+    }
+
+    /**
+     * Relationship with driver trips.
+     */
+    public function driverTrips()
+    {
+        return $this->hasMany(DriverTrip::class, 'driver_id');
+    }
 }
