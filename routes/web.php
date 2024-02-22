@@ -50,6 +50,6 @@ Route::middleware(['auth', 'role:driver'])->group(function () {
 
 Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('client/home', [ClientController::class, 'index'])->name('client.home');
-    Route::get('client/search', [ClientController::class, 'index'])->name('client.search');
+    Route::get('client/create', [ClientController::class, 'create'])->name('client.create');
 });
   

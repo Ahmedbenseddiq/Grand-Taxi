@@ -12,6 +12,11 @@ class clientController extends Controller
         return view('client.home');
     }
 
+    public function create(){
+        return view('client.create');
+    }
+
+
     // public function dashboard(){
 
     //     if(Auth::check()) {
