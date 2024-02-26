@@ -52,5 +52,7 @@ Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('client/home', [ClientController::class, 'index'])->name('client.home');
     Route::get('client/create', [ClientController::class, 'create'])->name('client.create');
     Route::post('client/', [ClientController::class, 'store'])->name('client.store');
+    Route::get('client/history', [ClientController::class, 'history'])->name('client.history');
+    Route::get('client/review', [ClientController::class, 'review'])->name('client.review');
 });
   

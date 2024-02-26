@@ -31,10 +31,10 @@
           <li class="nav-item ">
             <a class="nav-link" href="{{ route('client.home') }}">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="{{ route('client.create') }}">Reservation</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ route('client.history') }}">History</a>
           </li>
           <li>
@@ -50,59 +50,32 @@
     </div>
   </nav>
 
-  <div class="container mt-5 mb-5 w-50">
-    <form method="POST" action="{{route('client.store')}}">
-      @csrf
-      <input type="hidden" name="client_id" value="{{ $client->id }}">
-      <div class="row mb-4">
-          <div class="col">
-              <div data-mdb-input-init class="form-outline">
-                  <label class="form-label" for="form3Example1">Full Name</label>
-                  <input type="text" id="form3Example1" name="" class="form-control" value="{{ $client->name }}" readonly />
-              </div>
-          </div>
-          <div class="col">
-              <div data-mdb-input-init class="form-outline">
-                  <label class="form-label" for="form3Example2">Email address</label>
-                  <input type="email" id="form3Example2" name="" class="form-control" value="{{ $client->email }}" readonly />
-              </div>
-          </div>
-      </div>
-     
-      <div class="col">
-    <div data-mdb-input-init class="form-outline">
-        <label class="form-label" for="trip">Select Trip and Driver</label>
-        <select name="driver_trip_id" id="trip" class="form-select form-control">
-            <option value="">Select a trip and driver</option>
-            @foreach($availableDriverTrips as $driverTrip)
-                <option value="{{ $driverTrip->id }}">
-                    Driver: {{ $driverTrip->driverDetail->user->name }} -
-                    {{ $driverTrip->trip->pickupCity->city_name }} to {{ $driverTrip->trip->destinationCity->city_name }}
-                </option>
+  <div class="container mt-5 mb-5 w-75">
+    <h2>Reservation History</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Trip</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($reservations as $reservation)
+            <tr>
+                <td>{{ $reservation->driverTrip->trip->pickupCity->city_name }} to {{ $reservation->driverTrip->trip->destinationCity->city_name }}</td>
+                <td>{{ $reservation->date }}</td>
+                <td>{{ $reservation->status }}</td>
+                <td><a href="{{ route('client.review', $reservation->id) }}">
+                    <i class="zmdi zmdi-eye"> add review</i>
+                </a></td>
+            </tr>
             @endforeach
-        </select>
-    </div>
+        </tbody>
+    </table>
 </div>
 
-
-      <div class="row mb-4">
-        <div class="col">
-            <div data-mdb-input-init class="form-outline">
-                <label class="form-label" for="form3Example1">Date</label>
-                <input type="date" id="form3Example1" name="date" class="form-control" required />
-            </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-          <div class="col text-end">
-              <button data-mdb-ripple-init type="submit" class="btn btn-primary">Book Now</button>
-          </div>
-      </div>
-  </form>
-
-  </div>
 
   <!-- Start Footer Section -->
   <footer class="footer-section">

@@ -36,4 +36,15 @@ class ClientController extends Controller
         $newreservation = Reservation::create($data);
         return redirect()->route('client.home');
     }
+
+    public function history(){
+        $client = Auth::user();
+        $reservations = $client->reservations()->get();
+        return view('client.history', ['reservations' => $reservations]);
+    }
+
+    public function review(){
+
+    }
+    
 }
