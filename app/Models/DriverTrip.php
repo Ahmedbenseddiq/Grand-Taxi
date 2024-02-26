@@ -7,15 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class DriverTrip extends Model
 {
-    protected $fillable = ['driver_id', 'trip_id'];
+    use HasFactory;
 
-    public function driver()
+    protected $fillable = ['driver_details_id', 'trip_id'];
+
+    public function driverDetail()
     {
-        return $this->belongsTo(User::class, 'driver_id');
+        return $this->belongsTo(DriverDetail::class, 'driver_details_id');
     }
+
 
     public function trip()
     {
         return $this->belongsTo(Trip::class);
+    }
+
+    public function reservation()
+    {
+        return $this->hasOne(Reservation::class);
     }
 }

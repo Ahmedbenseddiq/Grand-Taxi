@@ -29,6 +29,27 @@ class UserSeeder extends Seeder
                 'image' => 'image',
             ],
             [
+                'name' => 'driver1',
+                'email' => 'driver1@example.com',
+                'password' => bcrypt('12345678'),
+                'role' => 'driver',
+                'image' => 'image',
+            ],
+            [
+                'name' => 'driver2',
+                'email' => 'driver2@example.com',
+                'password' => bcrypt('12345678'),
+                'role' => 'driver',
+                'image' => 'image',
+            ],
+            [
+                'name' => 'driver3',
+                'email' => 'driver3@example.com',
+                'password' => bcrypt('12345678'),
+                'role' => 'driver',
+                'image' => 'image',
+            ],
+            [
                 'name' => 'client',
                 'email' => 'client@example.com',
                 'password' => bcrypt('12345678'),

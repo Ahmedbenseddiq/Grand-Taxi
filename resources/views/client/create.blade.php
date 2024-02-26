@@ -28,7 +28,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarsFurni">
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="{{ route('client.home') }}">Home</a>
           </li>
           <li class="nav-item active">
@@ -48,68 +48,57 @@
   </nav>
 
   <div class="container mt-5 mb-5 w-50">
-    <form>
+    <form method="POST" action="{{route('client.store')}}">
+      @csrf
+      <input type="hidden" name="client_id" value="{{ $client->id }}">
+      <div class="row mb-4">
+          <div class="col">
+              <div data-mdb-input-init class="form-outline">
+                  <label class="form-label" for="form3Example1">Full Name</label>
+                  <input type="text" id="form3Example1" name="" class="form-control" value="{{ $client->name }}" readonly />
+              </div>
+          </div>
+          <div class="col">
+              <div data-mdb-input-init class="form-outline">
+                  <label class="form-label" for="form3Example2">Email address</label>
+                  <input type="email" id="form3Example2" name="" class="form-control" value="{{ $client->email }}" readonly />
+              </div>
+          </div>
+      </div>
+     
+      <div class="col">
+    <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="trip">Select Trip and Driver</label>
+        <select name="driver_trip_id" id="trip" class="form-select form-control">
+            <option value="">Select a trip and driver</option>
+            @foreach($availableDriverTrips as $driverTrip)
+                <option value="{{ $driverTrip->id }}">
+                    Driver: {{ $driverTrip->driverDetail->user->name }} -
+                    {{ $driverTrip->trip->pickupCity->city_name }} to {{ $driverTrip->trip->destinationCity->city_name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
+
       <div class="row mb-4">
         <div class="col">
-          <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="form3Example1">Full Name</label>
-            <input type="text" id="form3Example1" name="name" class="form-control" />
-          </div>
-        </div>
-        <div class="col">
-          <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="form3Example2">Email address</label>
-            <input type="email" id="form3Example2" name="email" class="form-control" required/>
-          </div>
+            <div data-mdb-input-init class="form-outline">
+                <label class="form-label" for="form3Example1">Date</label>
+                <input type="date" id="form3Example1" name="date" class="form-control" required />
+            </div>
         </div>
       </div>
 
-      <!-- Email input -->
-      <div class="row mb-4">
-        <div class="col">
-          <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="form3Example1">Pick-up city</label>
-            <select name="pickup_city" id="" class="form-select form-control">
-              <option value="">Select a pick-up city</option>
-              <!-- Add your options here -->
-              <option value="city1">City 1</option>
-              <option value="city2">City 2</option>
-              <!-- Add more options as needed -->
-            </select>
-          </div>
-        </div>
-        <div class="col">
-          <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="form3Example2">Destination</label>
-            <select name="destination_city" id="" class="form-select form-control">
-              <option value="">Select a destination city</option>
-              <!-- Add your options here -->
-              <option value="destination1">Destination 1</option>
-              <option value="destination2">Destination 2</option>
-              <!-- Add more options as needed -->
-            </select>
-          </div>
-        </div>
-      </div>
 
-      <!-- Date input -->
-      <div class="row mb-4">
-        <div class="col">
-          <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="form3Example1">Date</label>
-            <input type="date" id="form3Example1" name="date" class="form-control" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Submit button -->
       <div class="row">
-        <div class="col text-end">
-          <button data-mdb-ripple-init type="button" class="btn btn-primary">Sign up</button>
-        </div>
+          <div class="col text-end">
+              <button data-mdb-ripple-init type="submit" class="btn btn-primary">Book Now</button>
+          </div>
       </div>
+  </form>
 
-    </form>
   </div>
 
   <!-- Start Footer Section -->

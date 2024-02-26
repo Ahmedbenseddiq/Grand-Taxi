@@ -9,15 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('driver_trip', function (Blueprint $table) {
+        Schema::create('driver_trips', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('driver_id');
-            $table->foreign('driver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('driver_details_id');
+            $table->foreign('driver_details_id')->references('id')->on('driver_details')->onDelete('cascade');
             $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 

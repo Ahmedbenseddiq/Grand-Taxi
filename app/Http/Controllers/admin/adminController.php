@@ -30,10 +30,10 @@ class adminController extends Controller
         }
     }
     
-    // public function getAdminUsers()
-    // {
-    //     return User::where('role', 'admin')->get();
-    // }
+    public function getAdminUsers()
+    {
+        return User::where('role', 'admin')->get();
+    }
     
     public function create (){
         return view('admin.createUser');

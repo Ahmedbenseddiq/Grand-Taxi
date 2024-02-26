@@ -9,18 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('driver_id');
-            // $table->foreign('driver_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('driver_trip_id');
+            $table->foreign('driver_trip_id')->references('id')->on('driver_trips')->onDelete('cascade');
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('trip');
-            $table->foreign('trip')->references('id')->on('driver_trip')->onDelete('cascade');
-            // $table->boolean('status')->default(false);
-            $table->boolean('arrived')->default(false);
+            $table->date('date');
             $table->timestamps();
         });
     }

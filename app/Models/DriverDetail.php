@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class DriverDetail extends Model
 {
-    protected $fillable = ['driver_id', 'lisence_plate', 'type', 'payment'];
+    use HasFactory;
 
-    public function driver()
+    protected $fillable = [
+        'driver_id', 'license_plate', 'vehicle_type', 'status', 'payment',
+    ];
+
+    public function user()
     {
         return $this->belongsTo(User::class, 'driver_id');
     }
 
-    public function trips()
+    public function driverTrips()
     {
-        return $this->hasMany(DriverTrip::class, 'driver_id');
+        return $this->hasMany(DriverTrip::class);
     }
 }

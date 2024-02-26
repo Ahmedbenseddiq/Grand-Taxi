@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -7,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
-    protected $fillable = ['pickup_city_id', 'destination_city_id', 'date'];
+    use HasFactory;
+
+    protected $fillable = ['pickup_city_id', 'destination_city_id'];
 
     public function pickupCity()
     {
@@ -19,8 +22,9 @@ class Trip extends Model
         return $this->belongsTo(City::class, 'destination_city_id');
     }
 
-    public function reservations()
+    public function driverTrips()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(DriverTrip::class);
     }
 }
+

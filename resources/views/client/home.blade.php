@@ -34,7 +34,7 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="{{ route('client.home') }}">Home</a>
 						</li>
-						<li class="nav-item active">
+						<li class="nav-item ">
 							<a class="nav-link" href="{{ route('client.create') }}">Reservation</a>
 						</li>
 						

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('driver_id');
             $table->foreign('driver_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('lisence_plate');
-            $table->string('type');
+            $table->string('vehicle_type');
+            $table->enum('status',['available', 'busy', 'offline'])->default('available');
             $table->enum('payment',['cash','card','other']);
             $table->timestamps();
         });
