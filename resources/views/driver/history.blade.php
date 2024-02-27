@@ -183,7 +183,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">{{ $reservationCount }}</h2>
+                                <h2 class="number">{{ $driverReservationsCount }}</h2>
                                 <span class="desc">reservation</span>
                                 <div class="icon ">
                                     <i class="zmdi zmdi-calendar-note"></i>
@@ -207,15 +207,15 @@
                                    
                                 </div>
                                 <div class="table-data__tool-right">
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <a href="{{ route('driver.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-plus"></i>Add Trip
-                                    </button>
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    </a>
+                                    <a href="{{ route('driver.availability') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-eye"></i>Availability
-                                    </button>  
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    </a>  
+                                    <a href="{{ route('driver.payment') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-money"></i>Payment
-                                    </button>   
+                                    </a>   
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">

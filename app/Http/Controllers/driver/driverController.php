@@ -12,18 +12,33 @@ class driverController extends Controller
     public function index(){
 
         $user = auth()->user();
-        $userName = $user->name;
-    
+        $driverReservationsCount = $user->reservations()->count();
+
         $driverCount = User::where('role', 'driver')->count();
         $clientCount = User::where('role', 'client')->count();
-        $reservationCount = Reservation::count(); 
-    
-        return view('driver.history ',  ['userName' => $userName, 'driverCount' => $driverCount, 'clientCount' => $clientCount, 'reservationCount' => $reservationCount]);
+
+        return view('driver.history', [
+            'userName' => $user->name,
+            'driverReservationsCount' => $driverReservationsCount,
+            'driverCount' => $driverCount,
+            'clientCount' => $clientCount,
+        ]);
     }
     
 
-    public function edit(){
+    public function create(){
+        
+    }
 
-        return view('driver.history');
+    public function store(Request $request){
+        
+    }
+
+    public function payment(){
+
+    }
+
+    public function availability(){
+        
     }
 }

@@ -46,6 +46,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:driver'])->group(function () {
     Route::get('driver/history', [driverController::class, 'index'])->name('driver.history');
+    Route::get('driver/create', [driverController::class, 'create'])->name('driver.create');
+    Route::post('driver/store', [driverController::class, 'store'])->name('driver.store');
+    Route::get('driver/payment', [driverController::class, 'payment'])->name('driver.payment');
+    Route::get('driver/availability', [driverController::class, 'availability'])->name('driver.availability');
+
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
