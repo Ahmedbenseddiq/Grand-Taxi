@@ -45,61 +45,30 @@
   </nav>
 
   <div class="container mt-5 mb-5 w-50">
-    <form method="POST" action="{{ route('driver.store') }}">
-        @csrf
-        <input type="hidden" name="driver_details_id" value="{{ optional($driver->driverDetails)->id }}">
-        <div class="row mb-4">
+        <form method="POST" action="">
+            @csrf
+            <input type="hidden" name="driver_details_id" value="">
+            
             <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <label class="form-label" for="form3Example1">Full Name</label>
-                    <input type="text" id="form3Example1" name="" class="form-control" value="{{ $driver->name }}" readonly />
-                </div>
-            </div>
-            <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <label class="form-label" for="form3Example2">Email address</label>
-                    <input type="email" id="form3Example2" name="" class="form-control" value="{{ $driver->email }}" readonly />
-                </div>
-            </div>
-        </div>
-        <div class="row mb-4">
-            <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <label class="form-label" for="form3Example1">Vehicle Type</label>
-                    <input type="text" id="form3Example1" name="" class="form-control" value="{{ optional($driver->driverDetails)->vehicle_type }}" readonly />
-                </div>
-            </div>
-            <div class="col">
-                <div data-mdb-input-init class="form-outline">
-                    <label class="form-label" for="form3Example2">License Plate</label>
-                    <input type="text" id="form3Example2" name="" class="form-control" value="{{ optional($driver->driverDetails)->lisence_plate }}" readonly />
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-        <div data-mdb-input-init class="form-outline">
-            <label class="form-label" for="trip">Select Trip</label>
-            <select name="trip_id" id="trip" class="form-select form-control">
-                <option value="">Select a trip</option>
-                @foreach($trips as $trip)
-                    <option value="{{ $trip->id }}">{{ $trip->pickupCity->city_name }} to {{ $trip->destinationCity->city_name }}</option>
-                @endforeach
-            </select>
-        </div>
+    <div data-mdb-input-init class="form-outline">
+        <label class="form-label" for="trip">Select Payment Method</label>
+        <select name="payment_method" id="trip" class="form-select form-control">
+            <option value="">Select a payment method</option>
+            <option value="cash" {{ $selectedPaymentMethod == 'cash' ? 'selected' : '' }}>Cash</option>
+            <option value="card" {{ $selectedPaymentMethod == 'card' ? 'selected' : '' }}>Card</option>
+            <option value="paypal" {{ $selectedPaymentMethod == 'paypal' ? 'selected' : '' }}>PayPal</option>
+        </select>
     </div>
-
-
-
-        <div class="row mt-5">
-            <div class="col text-end">
-                <button data-mdb-ripple-init type="submit" class="btn btn-primary">Add Trip</button>
-            </div>
-        </div>
-    </form>
 </div>
 
 
+            <div class="row mt-5">
+                <div class="col text-end">
+                    <button data-mdb-ripple-init type="submit" class="btn btn-primary">Update Payment Method</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
   <!-- Start Footer Section -->
   <footer class="footer-section">

@@ -197,83 +197,63 @@
 
 
             <!-- DATA TABLE-->
-            <section class="p-t-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">History</h3>
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                   
-                                </div>
-                                <div class="table-data__tool-right">
-                                    <a href="{{ route('driver.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>Add Trip
-                                    </a>
-                                    <a href="{{ route('driver.availability') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-eye"></i>Availability
-                                    </a>  
-                                    <a href="{{ route('driver.payment') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-money"></i>Payment
-                                    </a>   
-                                </div>
-                            </div>
-                            <div class="table-responsive table-responsive-data2">
-                                <table class="table table-data2">
-                                    <thead>
-                                        <tr>
-                                            <th>name</th>
-                                            <th>email</th>
-                                            <th>description</th>
-                                            <th>date</th>
-                                            <th>status</th>
-                                            <th>price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="tr-shadow">
-                                            <!-- <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td> -->
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">lori@example.com</span>
-                                            </td>
-                                            <td class="desc">Samsung S8 Black</td>
-                                            <td>2018-09-27 02:12</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$679.00</td>
-                                            <!-- <td>
-                                                <div class="table-data-feature">
-                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button> 
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button> 
-                                                </div>
-                                            </td> -->
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">History</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                       
+                    </div>
+                    <div class="table-data__tool-right">
+                        <a href="{{ route('driver.create') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Add Trip
+                        </a>
+                        <a href="{{ route('driver.availability') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-eye"></i>Availability
+                        </a>  
+                        <a href="{{ route('driver.payment') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-money"></i>Payment
+                        </a>   
                     </div>
                 </div>
-            </section>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($driverReservations as $reservation)
+                            <tr class="tr-shadow">
+                                <td>{{ $reservation->name }}</td>
+                                <td>
+                                    <span class="block-email">{{ $reservation->driver_trip_id }}</span>
+                                </td>
+                                <td class="desc">{{ $reservation->client_id }}</td>
+                                <td>{{ $reservation->date }}</td>
+                                <td>
+                                    <!-- <span class="status--process">{{ $reservation->status }}</span> -->
+                                </td>
+                               
+                            </tr>
+                            <tr class="spacer"></tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
             <!-- END DATA TABLE-->
 
             <!-- COPYRIGHT-->
