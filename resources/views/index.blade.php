@@ -62,53 +62,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="here" class="container-fluid booking mt-5 pb-5">
-				<div class="container pb-5">
-					<div class="bg-light shadow" style="padding: 30px;">
-						<form action="" method="GET"> <!-- Assuming you have a 'search' route -->
-							<div class="row align-items-center" style="min-height: 60px;">
-								<div class="col-md-10">
-									<div class="row">
-										<div class="col-md-12">
-										  <div class="row">
-												<div class="col-md-4">
-													<div class="mb-6">
-														<select name="localisation" class="custom-select w-100 px-4" style="height: 47px;">
-														<option value="">Pick up</option>
-														<option value="option1">Option 1</option>
-														<option value="option2">Option 2</option>
-														<option value="option3">Option 3</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="mb-6">
-														<select name="localisation" class="custom-select w-100 px-4" style="height: 47px;">
-														<option value="">Destination</option>
-														<option value="option1">Option 1</option>
-														<option value="option2">Option 2</option>
-														<option value="option3">Option 3</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="mb-6">
-														<input type="date" name="date" class="form-control" style="height: 47px;">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									  
-								</div>
-								<div class="col-md-2">
-									<button type="submit" class="btn btn-primary btn-block" style="height: 47px; margin-top: -2px;">Search</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		
 		

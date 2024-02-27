@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\DriverTrip;
+use App\Models\Trip;
+use App\Models\City;
 use App\Models\Reservation; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +14,12 @@ use Illuminate\Support\Facades\DB;
 class ClientController extends Controller
 {
     public function index()
-    {
-        return view('client.home');
-    }
+{
+    $trips = Trip::all();
+    // dd($trips);
+    return view('client.home', ['trips' => $trips]);
+}
+
 
     public function create()
     {
@@ -43,8 +48,11 @@ class ClientController extends Controller
         return view('client.history', ['reservations' => $reservations]);
     }
 
-    public function review(){
+    // public function review(){
 
-    }
+    // }
+
+
+    
     
 }

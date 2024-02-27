@@ -44,22 +44,21 @@
     </div>
   </nav>
 
-  <div class="container mt-5 mb-5 w-50">
-  <form method="POST" action="{{ route('driver.paymentupdate') }}">
-    @csrf
-    <div class="form-group mb-5">
-        <label for="payment_method">Select Payment Method</label>
-        <select name="payment_method" id="payment_method" class="form-control">
-            <option value="">Select a payment method</option>
-            <option value="cash" {{ $driverDetails && $driverDetails->payment == 'cash' ? 'selected' : '' }}>Cash</option>
-            <option value="card" {{ $driverDetails && $driverDetails->payment == 'card' ? 'selected' : '' }}>Card</option>
-            <option value="paypal" {{ $driverDetails && $driverDetails->payment == 'paypal' ? 'selected' : '' }}>PayPal</option>
-        </select>
+    <div class="container mt-5 mb-5 w-50">
+        <form method="POST" action="{{ route('driver.updateAvailability') }}">
+            @csrf
+            <div class="form-group mb-5">
+                <label for="availability">Select Availability</label>
+                <select name="status" id="availability" class="form-control">
+                    <option value="">Select availability</option>
+                    <option value="available" {{ $driverDetails && $driverDetails->status == 'available' ? 'selected' : '' }}>Available</option>
+                    <option value="busy" {{ $driverDetails && $driverDetails->status == 'busy' ? 'selected' : '' }}>busy</option>
+                    <option value="unavailable" {{ $driverDetails && $driverDetails->status == 'unavailable' ? 'selected' : '' }}>Unavailable</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Availability</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary ">Update Payment</button>
-</form>
-
-</div>
 
 
   <!-- Start Footer Section -->

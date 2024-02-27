@@ -51,15 +51,57 @@ class driverController extends Controller
         return redirect()->route('driver.history');
     }
 
-    public function payment(){
+    public function payment() {
         $user = Auth::user(); 
-        $driverDetail = $user->driverDetail; 
-    
-        return view('payment_form', ['selectedPaymentMethod' => $driverDetail->payment]);
+        $driverDetail = $user->driverDetails; 
+        // dd($driverDetail);
+        return view('driver.payment', ['driverDetails' => $driverDetail]);
     }
     
-
-    public function availability(){
-
+    public function paymentupdate(Request $request) {
+        // dd($request);
+        $user = Auth::user();
+        $driverDetail = $user->driverDetail;
+    
+        if ($driverDetail) {
+            $data = $request->validate([
+                'payment_method' => 'required|in:cash,card,paypal',
+            ]);
+    
+            $driverDetail->update([
+                'payment' => $request->input('payment_method')
+            ]);
+    
+            return redirect()->route('driver.history')->with('success','Payment method updated successfully');
+        } else {
+            return redirect()->route('driver.history')->with('error','Driver details not found');
+        }
+    }
+    
+    public function availability() {
+        $user = Auth::user(); 
+        $driverDetail = $user->driverDetails; 
+        // dd($driverDetail);
+        return view('driver.availability', ['driverDetails' => $driverDetail]);
+    }
+    
+    public function updateAvailability(Request $request) {
+        // dd($request);
+        $user = Auth::user();
+        $driverDetail = $user->driverDetails;
+    
+        if ($driverDetail) {
+            $data = $request->validate([
+                'status' => 'required|in:available,unavailable,busy',
+            ]);
+    
+            $driverDetail->update([
+                'status' => $request->input('status')
+            ]);
+    
+            return redirect()->route('driver.history')->with('success','Availability updated successfully');
+        } else {
+            return redirect()->route('driver.history')->with('error','Driver details not found');
+        }
     }
 }

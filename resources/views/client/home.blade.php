@@ -29,7 +29,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div class="collapse navbar-collapse" id="navbarsFurni">
+				<div class="collapse navbar-collapse" id="navbarsFurni"
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li class="nav-item active">
 							<a class="nav-link" href="{{ route('client.home') }}">Home</a>
@@ -41,18 +41,14 @@
 							<a class="nav-link" href="{{ route('client.history') }}">History</a>
 						</li>
 						<li>
-                            <div class="">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
+							<form  method="POST" action="{{ route('logout') }}">
+								@csrf
 
-                                    <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                        this.closest('form').submit();"> <i class="zmdi zmdi-power"></i>
-                                        {{ __('Log Out') }}
-                                    </a>
-                                </form>
-                                
-                            </div>
+								<a class="nav-link" href="{{ route('logout') }}"
+										> <i class="zmdi zmdi-power"></i>
+									{{ __('Log Out') }}
+								</a>
+							</form>
                         </li> 
 					</ul>
 
@@ -77,47 +73,39 @@
 			<div id="here" class="container-fluid booking mt-5 pb-5">
 				<div class="container pb-5">
 					<div class="bg-light shadow" style="padding: 30px;">
-						<form action="" method="GET"> <!-- Assuming you have a 'search' route -->
-							<div class="row align-items-center" style="min-height: 60px;">
-								<div class="col-md-10">
-									<div class="row">
-										<div class="col-md-12">
-										  <div class="row">
-												<div class="col-md-4">
-													<div class="mb-6">
-														<select name="localisation" class="custom-select w-100 px-4" style="height: 47px;">
-														<option value="">Pick up</option>
-														<option value="option1">Option 1</option>
-														<option value="option2">Option 2</option>
-														<option value="option3">Option 3</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="mb-6">
-														<select name="localisation" class="custom-select w-100 px-4" style="height: 47px;">
-														<option value="">Destination</option>
-														<option value="option1">Option 1</option>
-														<option value="option2">Option 2</option>
-														<option value="option3">Option 3</option>
-														</select>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="mb-6">
-														<input type="date" name="date" class="form-control" style="height: 47px;">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									  
-								</div>
-								<div class="col-md-2">
-									<button type="submit" class="btn btn-primary btn-block" style="height: 47px; margin-top: -2px;">Search</button>
+					<form action="{{ route('client.search') }}" method="GET">
+						<div class="row align-items-center" style="min-height: 60px;">
+							<div class="col-md-5">
+								<div class="mb-6">
+									<label for="pickup">Pickup City</label>
+									<select id="pickup" name="pickup" class="custom-select w-100 px-4" style="height: 47px;">
+										<option value="">Select Pickup City</option>
+										@foreach($trips as $trip)
+											<option value="{{ $trip->pickup_city_id }}">{{ $trip->destinationCity->city_name }}</option>
+										@endforeach
+									</select>
 								</div>
 							</div>
-						</form>
+							<div class="col-md-5">
+								<div class="mb-6">
+									<label for="destination">Destination City</label>
+									<select id="destination" name="destination" class="custom-select w-100 px-4" style="height: 47px;">
+										<option value="">Select Destination City</option>
+										@foreach($trips as $trip)
+											<option value="{{ $trip->destination_city_id }}">{{ $trip->destinationCity->city_name }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<button type="submit" class="btn btn-primary btn-block ms-5" style="height: 47px; margin-top: 25px;">Search</button>
+							</div>
+						</div>
+						
+					</form>
+
+
+
 					</div>
 				</div>
 			</div>
