@@ -17,6 +17,7 @@ class DriverDetail extends Model
     {
         return $this->belongsTo(User::class, 'driver_id');
     }
+    
 
     public function driverTrips()
     {

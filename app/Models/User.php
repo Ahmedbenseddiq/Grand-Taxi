@@ -52,6 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(DriverDetail::class, 'driver_id');
     }
+    
 
     /**
      * Relationship with driver trips.

@@ -11,7 +11,7 @@ class Trip extends Model
     use HasFactory;
 
     protected $fillable = ['pickup_city_id', 'destination_city_id'];
-
+ 
     public function pickupCity()
     {
         return $this->belongsTo(City::class, 'pickup_city_id');
@@ -27,4 +27,6 @@ class Trip extends Model
         return $this->hasMany(DriverTrip::class);
     }
 }
+
+
 

@@ -38,7 +38,7 @@
 							<a class="nav-link" href="{{ route('client.create') }}">Reservation</a>
 						</li>
 						<li class="nav-item ">
-							<a class="nav-link" href="{{ route('client.history') }}">Historyw</a>
+							<a class="nav-link" href="{{ route('client.history') }}">History</a>
 						</li>
 						<li>
                             <div class="">

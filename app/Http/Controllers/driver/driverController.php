@@ -5,7 +5,9 @@ namespace App\Http\Controllers\driver;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Reservation;
+use App\Models\Trip;
+use App\Models\Reservation;use Illuminate\Support\Facades\Auth;
+
 
 class driverController extends Controller
 {
@@ -26,8 +28,12 @@ class driverController extends Controller
     }
     
 
-    public function create(){
-        
+    public function create()
+    {
+        $trips = Trip::all();
+        $driver = Auth::user();
+        // dd($trips);
+        return view('driver.createTrip', ['driver' => $driver, 'trips' => $trips]);
     }
 
     public function store(Request $request){
@@ -39,6 +45,6 @@ class driverController extends Controller
     }
 
     public function availability(){
-        
+
     }
 }
