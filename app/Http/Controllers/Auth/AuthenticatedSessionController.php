@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->route('admin.driver');
                 break;
             case 'driver':
-                return redirect()->route('driver.dashboard');
+                return redirect()->route('driver.history');
                 break;
             case 'client':
                 return redirect()->route('client.home');

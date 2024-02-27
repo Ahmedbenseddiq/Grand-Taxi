@@ -12,6 +12,9 @@ class adminController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
+        $userName = $user->name;
+        
         $driverCount = User::where('role', 'driver')->count();
         $clientCount = User::where('role', 'client')->count();
         $reservationCount = Reservation::count(); 

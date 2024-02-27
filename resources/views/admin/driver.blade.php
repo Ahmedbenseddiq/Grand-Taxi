@@ -115,6 +115,17 @@
                             <a href="{{ route('admin.reservation') }}">
                                 <i class="far fa-calendar-check"></i>Reservations</a>
                         </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();"> <i class="zmdi zmdi-power"></i>
+                                    {{ __('Log Out') }}
+                                </a>
+                            </form>  
+                        </li>  
                         
                     </ul>
                 </div>
@@ -133,13 +144,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome back
-                                <span>John!</span>
+                                <span>{{ $userName }}!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>
                     </div>
                 </div>
             </section>
+
             <!-- END WELCOME-->
 
             <section class="statistic statistic2">

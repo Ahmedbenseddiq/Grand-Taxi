@@ -50,22 +50,7 @@
                     </div>
                    <div class="header__navbar">
                          <ul class="list-unstyled">
-                             <li class="has-sub">
-                                <a href="{{ route('admin.driver') }}">
-                                    <i class="fas fa-car"></i>Drivers
-                                    <span class="bot-line"></span>
-                                </a>
-                            </li> 
-                             <li>
-                                <a href="{{ route('admin.client') }}">
-                                    <i class="fas fa-user"></i>
-                                    <span class="bot-line"></span>Clients</a>
-                            </li> 
-                             <li>
-                                <a href="{{ route('admin.reservation') }}">
-                                    <i class="far fa-calendar-check"></i>
-                                    <span class="bot-line"></span>Reservations</a>
-                            </li>
+                             
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
@@ -104,18 +89,16 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="driver.html">
-                                <i class="fas fa-car"></i>Drivers</a>
-                        </li>
-                        <li>
-                            <a href="client.html">
-                                <i class="fas fa-user"></i>Clients</a>
-                        </li>
-                        <li>
-                            <a href="reservation.html">
-                                <i class="far fa-calendar-check"></i>Reservations</a>
-                        </li>
-                        
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();"> <i class="zmdi zmdi-power"></i>
+                                    {{ __('Log Out') }}
+                                </a>
+                            </form>  
+                        </li>  
                     </ul>
                 </div>
             </nav>
@@ -161,13 +144,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome back
-                                <span>John!</span>
+                                <span>{{ $userName }}!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>
                     </div>
                 </div>
             </section>
+
             <!-- END WELCOME-->
 
             <section class="statistic statistic2">
@@ -180,7 +164,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">368</h2>
+                                <h2 class="number">{{ $driverCount }}</h2>
                                 <span class="desc">drivers</span>
                                 <div class="icon">
                                     <i class="fas fa-car"></i></i>
@@ -190,7 +174,7 @@
                         
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">86</h2>
+                                <h2 class="number">{{ $clientCount }}</h2>
                                 <span class="desc">clients</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
@@ -199,7 +183,7 @@
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">746</h2>
+                                <h2 class="number">{{ $reservationCount }}</h2>
                                 <span class="desc">reservation</span>
                                 <div class="icon ">
                                     <i class="zmdi zmdi-calendar-note"></i>
@@ -217,63 +201,43 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">data table</h3>
+                            <h3 class="title-5 m-b-35">History</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
-                                    <!-- <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="property">
-                                            <option selected="selected">All Properties</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
-                                    <!-- <div class="rs-select2--light rs-select2--sm">
-                                        <select class="js-select2" name="time">
-                                            <option selected="selected">Today</option>
-                                            <option value="">3 Days</option>
-                                            <option value="">1 Week</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
-                                    <!-- <button class="au-btn-filter">
-                                        <i class="zmdi zmdi-filter-list"></i>filters</button> -->
+                                   
                                 </div>
                                 <div class="table-data__tool-right">
                                     <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
-                                    <!-- <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div> -->
+                                        <i class="zmdi zmdi-plus"></i>Add Trip
+                                    </button>
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-eye"></i>Availability
+                                    </button>  
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-money"></i>Payment
+                                    </button>   
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">
                                 <table class="table table-data2">
                                     <thead>
                                         <tr>
-                                            <th></th>
                                             <th>name</th>
                                             <th>email</th>
                                             <th>description</th>
                                             <th>date</th>
                                             <th>status</th>
                                             <th>price</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="tr-shadow">
-                                            <td>
+                                            <!-- <td>
                                                 <label class="au-checkbox">
                                                     <input type="checkbox">
                                                     <span class="au-checkmark"></span>
                                                 </label>
-                                            </td>
+                                            </td> -->
                                             <td>Lori Lynch</td>
                                             <td>
                                                 <span class="block-email">lori@example.com</span>
@@ -284,128 +248,25 @@
                                                 <span class="status--process">Processed</span>
                                             </td>
                                             <td>$679.00</td>
-                                            <td>
+                                            <!-- <td>
                                                 <div class="table-data-feature">
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                         <i class="zmdi zmdi-mail-send"></i>
-                                                    </button> -->
+                                                    </button> 
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </button>
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                         <i class="zmdi zmdi-more"></i>
-                                                    </button> -->
+                                                    </button> 
                                                 </div>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">john@example.com</span>
-                                            </td>
-                                            <td class="desc">iPhone X 64Gb Grey</td>
-                                            <td>2018-09-29 05:57</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$999.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button> -->
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button> -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">lyn@example.com</span>
-                                            </td>
-                                            <td class="desc">iPhone X 256Gb Black</td>
-                                            <td>2018-09-25 19:03</td>
-                                            <td>
-                                                <span class="status--denied">Denied</span>
-                                            </td>
-                                            <td>$1199.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button> -->
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button> -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Lori Lynch</td>
-                                            <td>
-                                                <span class="block-email">doe@example.com</span>
-                                            </td>
-                                            <td class="desc">Camera C430W 4k</td>
-                                            <td>2018-09-24 19:10</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$699.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button> -->
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button> -->
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

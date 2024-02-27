@@ -45,7 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:driver'])->group(function () {
-    Route::get('driver/dashboard', [driverController::class, 'index'])->name('driver.dashboard');
+    Route::get('driver/history', [driverController::class, 'index'])->name('driver.history');
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
